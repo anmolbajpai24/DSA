@@ -4,11 +4,15 @@ public:
 
         if (s.length() != t.length()) return false;
 
-        sort(s.begin(), s.end());
-        sort(t.begin(), t.end());
+        vector<int> count(26,0);
 
-        for(int i = 0 ; i < s.length(); i++){
-            if(s[i] != t[i]){
+        for(int i = 0; i < s.length(); i++){
+            count[s[i] - 'a']++;
+            count[t[i] - 'a']--;
+        }
+
+        for(int j = 0; j < count.size(); j++){
+            if(count[j] != 0){
                 return false;
             }
         }
