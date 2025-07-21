@@ -2,20 +2,15 @@ class Solution {
 public:
     bool isPalindrome(string s) {
         string cleanedString;
+        string reverse;
         for(char c : s){
             if(isalnum(c)){
                 cleanedString += tolower(c);
             }
         }
-        int i = 0;
-        int j = cleanedString.length() - 1;
-        while(i <= j){
-            if(cleanedString[i] != cleanedString[j]){
-                return false;
-            }
-            i++;
-            j--;
+        for(int i = cleanedString.length() - 1; i >= 0; i--){
+            reverse += cleanedString[i];
         }
-        return true;
+        return reverse == cleanedString;
     }
 };
